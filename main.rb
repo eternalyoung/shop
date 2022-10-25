@@ -14,11 +14,15 @@ loop do
   user_chose = $stdin.gets.to_i - 1
   break if user_chose.negative?
 
-  basket.push(collection.buy!(user_chose))
-  basket_price += basket[-1].price
+  if collection.to_a[user_chose].count.positive?
+    basket.push(collection.buy!(user_chose))
+    basket_price += basket[-1].price
 
-  puts "\nВы выбрали: #{basket[-1].to_s}"
-  puts "\nВсего товаров на сумму: #{basket_price} руб"
+    puts "\nВы выбрали: #{basket[-1].to_s}"
+    puts "\nВсего товаров на сумму: #{basket_price} руб"
+  else
+    puts 'У нас закончился данный товар.'
+  end
 end
 
 puts 'Вы купили:'
