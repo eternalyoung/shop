@@ -1,8 +1,12 @@
 class Product
-  attr_reader :price, :count
+  attr_accessor :price, :count
 
-  def initialize(price, count)
-    @price = price
-    @count = count
+  def initialize(params)
+    @price = params[:price].to_i
+    @count = params[:count].to_i
+  end
+
+  def self.from_file(path)
+    raise 'NotImplementedError'
   end
 end
