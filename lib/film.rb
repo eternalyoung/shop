@@ -1,0 +1,3 @@
+class Film < Product
+
+end
