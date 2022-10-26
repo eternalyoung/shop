@@ -16,6 +16,6 @@ class Disk < Product
 
   def self.from_file(path)
     lines = File.readlines(path, chomp: true)
-    new(title: lines[0], author: lines[1], genre: lines[2], year: lines[3],price: lines[4], count: lines[5])
+    new(title: lines[0], author: lines[1], genre: lines[2], year: lines[3], price: lines[4], count: lines[5])
   end
 end

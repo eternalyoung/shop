@@ -6,7 +6,7 @@ class Product
     @count = params[:count].to_i
   end
 
-  def self.from_file(path)
-    raise 'NotImplementedError'
+  def self.from_file(_path)
+    raise "NotImplementedError"
   end
 end

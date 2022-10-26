@@ -1,7 +1,7 @@
-require_relative 'product'
-require_relative 'book'
-require_relative 'film'
-require_relative 'disk'
+require_relative "product"
+require_relative "book"
+require_relative "film"
+require_relative "disk"
 
 class ProductCollection
   def initialize(products)
