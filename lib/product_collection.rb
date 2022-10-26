@@ -4,18 +4,21 @@ require_relative "film"
 require_relative "disk"
 
 class ProductCollection
+  FOLDER_NAMES = {
+    Film => "films",
+    Book => "books",
+    Disk => "disks"
+  }
   def initialize(products)
     @products = products
   end
 
   def self.from_dir(path)
-    films_paths = Dir["#{path}/films/*.txt"]
-    books_paths = Dir["#{path}/books/*.txt"]
-    disks_paws = Dir["#{path}/disks/*.txt"]
-    films = films_paths.map { |film_path| Film.from_file(film_path) }
-    books = books_paths.map { |book_path| Book.from_file(book_path) }
-    disks = disks_paws.map { |disks_paw| Disk.from_file(disks_paw) }
-    new(films + books + disks)
+    products = []
+    FOLDER_NAMES.each_pair do |type, folder|
+      products += (Dir["#{path}/#{folder}/*.txt"].map { |film_path| type.from_file(film_path) })
+    end
+    new(products)
   end
 
   def to_a
