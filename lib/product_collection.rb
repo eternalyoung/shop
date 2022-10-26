@@ -35,8 +35,16 @@ class ProductCollection
     self
   end
 
-  def buy!(index)
+  def delete_product!(index)
     @products[index].count -= 1
     @products[index]
+  end
+
+  def to_s
+    output = ""
+    @products.each.with_index(1) do |product, index|
+      output << "\n#{index}: #{product}" if product.count.positive?
+    end
+    output
   end
 end

@@ -1,30 +1,27 @@
 require_relative "lib/product_collection"
+require_relative "lib/basket"
 collection = ProductCollection.from_dir("#{__dir__}/data")
 
-basket = []
-basket_price = 0
+users_basket = Basket.new
 
 loop do
   puts "\nЧто хотите купить:"
-  collection.to_a.each.with_index(1) do |product, index|
-    puts "#{index}: #{product}"
-  end
+  puts collection.to_s
   puts "0: Выход"
 
   user_chose = $stdin.gets.to_i - 1
   break if user_chose.negative?
 
   if collection.to_a[user_chose].count.positive?
-    basket.push(collection.buy!(user_chose))
-    basket_price += basket[-1].price
+    users_basket.add(collection.delete_product!(user_chose))
 
-    puts "\nВы выбрали: #{basket[-1]}"
-    puts "\nВсего товаров на сумму: #{basket_price} руб"
+    puts "\nВы выбрали: #{users_basket.last_added}"
+    puts "\nВсего товаров на сумму: #{users_basket.cost} руб."
   else
     puts "У нас закончился данный товар."
   end
 end
 
 puts "Вы купили:"
-basket.each { |item| puts item.to_s }
-puts "С Вас — #{basket_price} руб. Спасибо за покупки!"
+puts users_basket.to_s
+puts "С Вас — #{users_basket.cost} руб. Спасибо за покупки!"
