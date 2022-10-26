@@ -10,6 +10,7 @@ class Basket
   def last_added
     @products[-1]
   end
+
   def cost
     products_cost = 0
     @products.each { |product| products_cost += product.price }
