@@ -1,16 +1,15 @@
 class Basket
-  attr_reader :last_added
-
   def initialize
     @products = []
-    @last_added
   end
 
   def add(product)
     @products.push(product)
-    @last_added = product
   end
 
+  def last_added
+    @products[-1]
+  end
   def cost
     products_cost = 0
     @products.each { |product| products_cost += product.price }
