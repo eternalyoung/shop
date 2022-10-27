@@ -5,8 +5,10 @@ collection = ProductCollection.from_dir("#{__dir__}/data")
 users_basket = Basket.new
 
 loop do
+  break if collection.to_s.empty?
+
   puts "\nЧто хотите купить:"
-  puts collection.to_s
+  puts collection
   puts "0: Выход"
 
   user_chose = $stdin.gets.to_i - 1

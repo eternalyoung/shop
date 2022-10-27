@@ -12,9 +12,7 @@ class Basket
   end
 
   def cost
-    products_cost = 0
-    @products.each { |product| products_cost += product.price }
-    products_cost
+    @products.map(&:price).sum
   end
 
   def to_s

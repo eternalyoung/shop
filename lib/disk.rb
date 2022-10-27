@@ -11,7 +11,7 @@ class Disk < Product
   end
 
   def to_s
-    "Альбом #{@author} — «#{@title}», #{@genre}, #{@year}, #{@cost} руб. (осталось #{@count})"
+    "Альбом #{@author} — «#{@title}», #{@genre}, #{@year}, #{@cost} руб."
   end
 
   def self.from_file(path)

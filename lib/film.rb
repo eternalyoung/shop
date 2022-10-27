@@ -9,7 +9,7 @@ class Film < Product
   end
 
   def to_s
-    "Фильм «#{@title}», #{@year}, реж. #{@author}, #{@price} руб. (осталось #{@count})"
+    "Фильм «#{@title}», #{@year}, реж. #{@author}, #{@price} руб."
   end
 
   def self.from_file(path)

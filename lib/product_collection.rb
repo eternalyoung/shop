@@ -14,10 +14,10 @@ class ProductCollection
   end
 
   def self.from_dir(path)
-    products = []
-    FOLDER_NAMES.each_pair do |type, folder|
-      products += (Dir["#{path}/#{folder}/*.txt"].map { |film_path| type.from_file(film_path) })
-    end
+    products =
+      FOLDER_NAMES.map do |type, folder|
+        Dir["#{path}/#{folder}/*.txt"].map { |film_path| type.from_file(film_path) }
+      end.flatten
     new(products)
   end
 
@@ -43,7 +43,7 @@ class ProductCollection
   def to_s
     output = ""
     @products.each.with_index(1) do |product, index|
-      output << "\n#{index}: #{product}" if product.count.positive?
+      output << "\n#{index}: #{product} (осталось #{product.count})" if product.count.positive?
     end
     output
   end
