@@ -23,5 +23,5 @@ until collection.to_s.empty?
 end
 
 puts "Вы купили:"
-puts users_basket.to_s
+puts users_basket
 puts "С Вас — #{users_basket.cost} руб. Спасибо за покупки!"

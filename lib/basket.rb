@@ -16,6 +16,6 @@ class Basket
   end
 
   def to_s
-    @products.map { |product| "#{product.to_s} #{@products.count(product)} шт." }.uniq
+    @products.uniq.map { |product| "#{product} #{@products.count(product)} шт." }.join("\n")
   end
 end
