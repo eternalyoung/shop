@@ -4,9 +4,7 @@ collection = ProductCollection.from_dir("#{__dir__}/data")
 
 users_basket = Basket.new
 
-loop do
-  break if collection.to_s.empty?
-
+until collection.to_s.empty?
   puts "\nЧто хотите купить:"
   puts collection
   puts "0: Выход"
