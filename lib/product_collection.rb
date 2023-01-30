@@ -8,10 +8,7 @@ class ProductCollection
     Film => "films",
     Book => "books",
     Disk => "disks"
-  }
-  def initialize(products)
-    @products = products
-  end
+  }.freeze
 
   def self.from_dir(path)
     products =
@@ -21,8 +18,21 @@ class ProductCollection
     new(products)
   end
 
-  def to_a
-    @products
+  def initialize(products)
+    @products = products
+  end
+
+  def delete_product!(index)
+    @products[index].count -= 1
+    @products[index]
+  end
+
+  def in_stock?(index)
+    index < size && to_a[index].count.positive?
+  end
+
+  def size
+    to_a.size
   end
 
   def sort!(params)
@@ -35,9 +45,8 @@ class ProductCollection
     self
   end
 
-  def delete_product!(index)
-    @products[index].count -= 1
-    @products[index]
+  def to_a
+    @products
   end
 
   def to_s

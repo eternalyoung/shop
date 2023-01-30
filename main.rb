@@ -12,7 +12,7 @@ until collection.to_s.empty?
   user_chose = $stdin.gets.to_i - 1
   break if user_chose.negative?
 
-  if collection.to_a[user_chose].count.positive?
+  if collection.in_stock?(user_chose)
     users_basket.add(collection.delete_product!(user_chose))
 
     puts "\nВы выбрали: #{users_basket.last_added}"
