@@ -7,11 +7,10 @@ class Disk < Product
     @author = params[:author]
     @genre = params[:genre]
     @year = params[:year]
-    @cost = params[:cost]
   end
 
   def to_s
-    "Альбом #{@author} — «#{@title}», #{@genre}, #{@year}, #{@cost} руб."
+    "Альбом #{@author} — «#{@title}», #{@genre}, #{@year}, #{@price} руб."
   end
 
   def self.from_file(path)
